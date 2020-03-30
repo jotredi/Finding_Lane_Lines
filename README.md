@@ -60,4 +60,6 @@ Here is the output for a couple of images:
 
 ## Videos
 
-The pipeline is tested in three different videos that can be found in `./test_videos`. The output of these videos with the detected lanes drawn on them can be found in `./test_videos_output`.
+The pipeline is tested in three different videos that can be found in `./test_videos`
+
+The output of these videos with the detected lanes drawn on them can be found in `./test_videos_output`
