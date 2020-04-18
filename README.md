@@ -15,35 +15,40 @@ In this project, I detect lane lines in images and videos using Python and OpenC
 * [Pipeline](#pipeline)
 * [Images](#images)
 * [Videos](#videos)
+* [Reference](#reference)
 
 ## Pipeline
 
 My pipeline consists of the following steps. First, I convert the images to grayscale and then I apply a white and yellow mask in HLS color space to better detect white and yellow lanes in the road. Here is the result:
 
-<img src="./readme_images/masked.jpg" width="600" />
+<img src="./readme_images/masked.jpg" width="555" />
 
 Next, I apply a Gaussian Blur before applying the images to the Canny edge detector. Here is the Canny output:
 
-<img src="./readme_images/canny.jpg" width="600" />
+<img src="./readme_images/canny.jpg" width="555" />
 
 I apply the region of interest to the images and take the Hough lines to obtain the following result:
 
-<img src="./readme_images/lines.jpg" width="600" />
+<img src="./readme_images/lines.jpg" width="555" />
 
 To represent the original color image with the estimated lines on top of it a weighted image is used:
 
-<img src="./readme_images/final_image.jpg" width="600" />
+<img src="./readme_images/final_image.jpg" width="555" />
 
 In order to draw a single line on the left and right lanes, following steps in the draw_lines() function are followed:
 * First, lines are divided in left and right lines as well as deleting possible horizontal lines.
 * Then, we need to take the average position of the lines (mean slope and intercept) to get a single line per lane.
 * Finally, lines are extrapolated so that they start at the bottom of the road and finish at the end of our region of interest.
-* For representation, I have taken a weighted average over last 10 frames.
 
 ## Images
-Here are the outputs for some of the images:
+Here's the output for a couple of images:
 
 <img src="./test_images_output/solidWhiteRight.jpg" width="430" />  <img src="./test_images_output/solidYellowCurve2.jpg" width="430" />
 
 ## Videos
 The pipeline is tested in three different videos that can be found in `./test_videos`. The output of these videos with the detected lanes drawn on them can be found in `./test_videos_output`.
+
+## Reference
+* https://docs.opencv.org/3.4.0/d9/db0/tutorial_hough_lines.html
+* https://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/hough_lines/hough_lines.html
+* https://github.com/maunesh/opencv-gui-helper-tool
